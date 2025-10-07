@@ -1,1 +1,1 @@
-ls -u -t -p -m 
+ls -tmFA | cat | tr -d " "
