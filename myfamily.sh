@@ -1,1 +1,1 @@
-curl -s https://acad.learn2earn.ng/assets/superhero/all.json | jq ".[] | select(.id==$HERO_ID) | .connections.relatives" | tr -d '""'7fa9c71386f76069ec2f79eb4c4add4e09e64af2
+curl -s https://acad.learn2earn.ng/assets/superhero/all.json | jq ".[] | select(.id==$HERO_ID) | .connections.relatives" | tr -d '"'
