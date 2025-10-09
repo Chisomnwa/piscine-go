@@ -12,7 +12,7 @@ func PrintNbr(n int) {
 		return
 	}
 
-	if n>= 10 {
+	if n >= 10 {
 		PrintNbr(n / 10)
 	}
 	printDigit(n % 10)
