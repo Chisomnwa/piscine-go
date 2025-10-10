@@ -2,20 +2,14 @@ package piscine
 
 import "github.com/01-edu/z01"
 
-func printCombNREcursive(n, start int, combination []rune) {
+func printCombNRecursive(n, start int, combination []rune) {
 	if len(combination) == n {
 		for _, c := range combination {
 			z01.PrintRune(c)
 		}
 
-		last := true
-		for i, c := range combination {
-			if c != rune('0'+i+10-n) {
-				last = false
-				break
-			}
-		}
-		if !last {
+		// Detect if this is the last combination
+		if combination[0] != rune('0'+(10-n)) {
 			z01.PrintRune(',')
 			z01.PrintRune(' ')
 		}
@@ -23,14 +17,14 @@ func printCombNREcursive(n, start int, combination []rune) {
 	}
 
 	for i := start; i <= 9; i++ {
-		printCombNREcursive(n, i+1, append(combination, rune('0'+i)))
+		printCombNRecursive(n, i+1, append(combination, rune('0'+i)))
 	}
 }
 
 func PrintCombN(n int) {
-	if n < 1 || n < 9 {
+	if n <= 0 || n >= 10 {
 		return
 	}
-	printCombNREcursive(n, 0, []rune{})
+	printCombNRecursive(n, 0, []rune{})
 	z01.PrintRune('\n')
 }
