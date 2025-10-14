@@ -1,8 +1,7 @@
 package piscine
 
-// This function returns the factorial of the parameter as an int
-
 func IterativeFactorial(nb int) int {
+	// This function returns the factorial of the parameter as an int
 	if nb < 0 {
 		return 0
 	}
