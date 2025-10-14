@@ -1,7 +1,7 @@
 package piscine
 
 func RecursiveFactorial(nb int) int {
-	// Because negative numbers do not have factorials 
+	// Because negative numbers do not have factorials
 	if nb < 0 {
 		return 0
 	}
@@ -12,7 +12,7 @@ func RecursiveFactorial(nb int) int {
 	}
 
 	// Recursive call
-	result := nb * RecursiveFactorial(nb -1)
+	result := nb * RecursiveFactorial(nb-1)
 
 	// Check for overflow (If result becomes negative)
 	if result < 0 {
