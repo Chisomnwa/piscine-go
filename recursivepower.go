@@ -6,7 +6,7 @@ func RecursivePower(nb int, power int) int {
 		return 0
 	}
 
-	// When power equals zero because anything raised 
+	// When power equals zero because anything raised
 	// to power zero is 1
 	if power == 0 {
 		return 1
