@@ -15,6 +15,6 @@ func Fibonacci(index int) int {
 		return 1
 	}
 
-	// NOw calling the recusrive
+	// Now calling the recusrive
 	return Fibonacci(index-1) + Fibonacci(index-2)
-	}
+}
