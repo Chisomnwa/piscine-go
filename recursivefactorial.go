@@ -21,3 +21,4 @@ func RecursiveFactorial(nb int) int {
 
 	return result
 }
+
