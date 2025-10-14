@@ -6,6 +6,11 @@ func RecursiveFactorial(nb int) int {
 		return 0
 	}
 
+	// To prevent overflow and deep recursion
+	if nb > 20 {
+		return 0
+	}
+
 	// Base case: 0! = 1 and 1! = 1
 	if nb == 0 || nb == 1 {
 		return 1
