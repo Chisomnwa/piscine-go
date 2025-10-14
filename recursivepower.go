@@ -13,5 +13,5 @@ func RecursivePower(nb int, power int) int {
 	}
 
 	// Calling the recursive
-	return nb * RecursivePower(nb, power - 1)
+	return nb * RecursivePower(nb, power-1)
 }
