@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	args := os.Args[1:] // Skip the program name
+	args := os.Args[1:]  // Skip the program name
 	for _, word := range args {
-		for _, r:= range word {
+		for _, r := range word {
 			z01.PrintRune(r)
 		}
 		z01.PrintRune('\n')
