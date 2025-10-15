@@ -1,20 +1,13 @@
 package piscine
 
-func IsAlpha(s string) int {
-	count := 0
+func IsAlpha(s string) bool {
 	for _, char := range s {
-		// Check if it's a lower case letter
-		// i. e if the if the rune’s numeric value is between 97 and 122
-		if char >= 'a' && char <= 'z' {
-			count++
-		}
-
-		// Check if it's an upper case letter
-		// i. e if the rune's numeric value is between 65 and 90
-		if char >= 'A' && char <= 'Z' {
-			count++
+		// check if not a letter or a digit
+		if !((char >= 'a' && char <= 'z') ||
+			(char >= 'A' && char <= 'Z') ||
+			(char >= '0' && char <= '9')) {
+			return false
 		}
 	}
-
-	return count
+	return true
 }
