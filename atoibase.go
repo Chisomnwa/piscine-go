@@ -39,4 +39,3 @@ func isValidBase(base string) bool {
 	}
 	return true
 }
-
