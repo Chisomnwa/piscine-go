@@ -1,6 +1,6 @@
 package piscine
 
-func AlphaCount(s string) int {
+func IsAlpha(s string) int {
 	count := 0
 	for _, char := range s {
 		// Check if it's a lower case letter
