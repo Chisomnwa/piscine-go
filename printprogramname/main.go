@@ -1,20 +1,22 @@
 package main
 
-import ("os"
-		"github.com/01-edu/z01")
+import (
+	"github.com/01-edu/z01"
+	"os"
+)
 
 func main() {
 	// Get the program name (e.g., "./main" or "./printprogramme")
 	programPath := os.Args[0]
 
 	// Find only the part after the last '/'
-	programName:= ""
+	programName := ""
 	for i := len(programPath) - 1; i >= 0; i-- {
 		if programPath[i] == '/' {
 			programName = programPath[i+1:]
 			break
 		}
-	} 
+	}
 
 	// If there's no '/', the whole string is the program name
 	if programName == "" {
