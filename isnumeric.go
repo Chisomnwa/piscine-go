@@ -1,3 +1,5 @@
+package piscine
+
 func IsNumeric(s string) bool {
 	if s == "" {
 		return false
