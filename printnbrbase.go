@@ -36,7 +36,7 @@ func printNumber(n int, base string) {
 }
 
 // Helper to check if the base is valid
-func isValidBase(base string) bool {
+func isValidBaseAtoi(base string) bool {
 	if len(base) < 2 {
 		return false
 	}
