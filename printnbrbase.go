@@ -16,7 +16,7 @@ func PrintNbrBase(nbr int, base string) {
 		z01.PrintRune('-')
 		if nbr == -9223372036854775808 { // handle int64 min overflow
 			printNumber(-(nbr / len(base)), base)
-			z01.PrintRune(rune(base[-(nbr%len(base))]))
+			z01.PrintRune(rune(base[-(nbr % len(base))]))
 			return
 		}
 		nbr = -nbr
@@ -53,4 +53,3 @@ func isValidBase(base string) bool {
 	}
 	return true
 }
-
