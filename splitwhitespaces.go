@@ -1,6 +1,5 @@
 package piscine
 
-
 func SplitWhiteSpaces(s string) []string {
 	var words []string
 	word := ""
@@ -13,7 +12,7 @@ func SplitWhiteSpaces(s string) []string {
 			}
 		} else {
 			word += string(char)
-		} 
+		}
 	}
 
 	if word != "" {
