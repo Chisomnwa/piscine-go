@@ -37,7 +37,6 @@ func main() {
 	z01.PrintRune('\n')
 }
 
-
 func toInt(s string) (int, bool) {
 	num := 0
 	for _, r := range s {
