@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"strconv"
 
 	"github.com/01-edu/z01"
 )
@@ -18,8 +17,8 @@ func main() {
 	}
 
 	for _, arg := range args {
-		num, err := strconv.Atoi(arg) // convert string to integer
-		if err != nil || num < 1 || num > 20 {
+		num, ok := toInt(arg) // convert string to integer
+		if !ok || num < 1 || num > 26 {
 			// Invalid argument - prints space
 			z01.PrintRune(' ')
 			continue
@@ -36,4 +35,16 @@ func main() {
 		z01.PrintRune(letter)
 	}
 	z01.PrintRune('\n')
+}
+
+
+func toInt(s string) (int, bool) {
+	num := 0
+	for _, r := range s {
+		if r < '0' || r > '9' {
+			return 0, false
+		}
+		num = num*10 + int(r-'0')
+	}
+	return num, true
 }
