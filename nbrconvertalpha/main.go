@@ -33,8 +33,12 @@ func main() {
 		}
 
 		z01.PrintRune(letter)
+		printed = true
 	}
-	z01.PrintRune('\n')
+
+	if printed {
+		z01.PrintRune('\n')
+	}
 }
 
 func toInt(s string) (int, bool) {
