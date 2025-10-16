@@ -1,6 +1,5 @@
 package piscine
 
-
 func ConcatParams(args []string) string {
 	if len(args) == 0 {
 		return ""
