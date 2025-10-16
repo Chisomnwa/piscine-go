@@ -29,11 +29,11 @@ func main() {
 		// Convert number to corresponding letter
 		var letter rune
 		if upper {
-			letter = rune('A' + num -1) // uppercase letters
+			letter = rune('A' + num - 1) // uppercase letters
 		} else {
-			letter = rune('a' + num -1) // lowercase letters
+			letter = rune('a' + num - 1) // lowercase letters
 		}
-		
+
 		z01.PrintRune(letter)
 	}
 	z01.PrintRune('\n')
