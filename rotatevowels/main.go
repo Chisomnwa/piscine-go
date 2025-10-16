@@ -16,7 +16,7 @@ func main() {
 
 	// Step 1: Collect all vowels
 	var vowels []rune
-	for _, arg := range args {C
+	for _, arg := range args {
 		for _, r := range arg {
 			if isVowel(r) {
 				vowels = append(vowels, r)
