@@ -2,7 +2,7 @@ package piscine
 
 func Split(s, sep string) []string {
 	var result []string
-	sepLen :=  len(sep)
+	sepLen := len(sep)
 	start := 0
 
 	// iterate through string s
@@ -12,7 +12,6 @@ func Split(s, sep string) []string {
 			result = append(result, s[start:i])
 			start = i + sepLen
 			i += sepLen - 1
-			
 		}
 	}
 
