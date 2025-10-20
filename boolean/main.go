@@ -10,9 +10,9 @@ type boolean bool
 
 const (
 	evenMsg = "I have an even number of arguments"
-	oddMsg = "I have an odd number of arguments"
-	yes = true
-	no = false
+	oddMsg  = "I have an odd number of arguments"
+	yes     = true
+	no      = false
 )
 
 func printStr(s string) {
