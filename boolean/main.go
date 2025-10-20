@@ -1,0 +1,41 @@
+package main
+
+import (
+	"os"
+
+	"github.com/01-edu/z01"
+)
+
+type boolean bool
+
+const (
+	evenMsg = "I have an even number of arguments"
+	oddMsg = "I have an odd number of arguments"
+	yes = true
+	no = false
+)
+
+func printStr(s string) {
+	for _, r := range s {
+		z01.PrintRune(r)
+	}
+	z01.PrintRune('\n')
+}
+
+func isEven(nbr int) boolean {
+	if nbr%2 == 0 {
+		return yes
+	} else {
+		return no
+	}
+}
+
+func main() {
+	lengthOfArg := len(os.Args[1:])
+
+	if isEven(lengthOfArg) {
+		printStr(evenMsg)
+	} else {
+		printStr(oddMsg)
+	}
+}
