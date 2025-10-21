@@ -27,6 +27,7 @@ func main() {
 			printstrs("ERROR: open ")
 			printstrs(args[i])
 			printstrs(": no such file or directory\nexit status 1\n")
+			os.Exit(1) // ✅ exit with real non-zero status
 		} else {
 			printstrs(string(filecontent))
 		}
