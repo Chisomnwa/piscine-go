@@ -3,54 +3,81 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 )
 
-func main() {
-	args := os.Args[1:]
-
-	if len(args) < 3 || args[0] != "-c" {
-		fmt.Println("Usage: go run . -c <number> <file> [<file>...]")
-		os.Exit(1)
-	}
-
-	// Convert string to int
-	count, err := strconv.Atoi(args[1])
-	if err != nil || count < 0 {
-		fmt.Println("Invalid count")
-		os.Exit(1)
-	}
-
-	files := args[2:]
-	exitCode := 0
-
-	for i, file := range files {
-		// Print header if multiple files
-		if len(files) > 1 {
-			if i > 0 {
-				fmt.Println()
-			}
-			fmt.Printf("==> %s <==\n", file)
+func strToInt(s string) (int, bool) {
+	n := 0
+	for _, r := range s {
+		if r < '0' || r > '9' {
+			return 0, false
 		}
+		n = n*10 + int(r-'0')
+	}
+	return n, true
+}
 
-		// Try reading file
-		data, err := os.ReadFile(file)
+func main() {
+	if len(os.Args) < 4 || os.Args[1] != "-c" {
+		os.Exit(1)
+	}
+	n, ok := strToInt(os.Args[2])
+	if !ok || n <= 0 {
+		os.Exit(1)
+	}
+
+	files := os.Args[3:]
+	status := 0
+	printedAny := false
+	for _, fn := range files {
+		f, err := os.Open(fn)
 		if err != nil {
 			fmt.Println(err)
-			exitCode = 1
+			status = 1
+			printedAny = true
+			continue
+		}
+		
+		info, err := f.Stat()
+		if err != nil {
+			fmt.Println(err)
+			status = 1
+			f.Close()
+			printedAny = true
 			continue
 		}
 
-		// Calculate start index
-		start := len(data) - count
-		if start < 0 {
-			start = 0
+		if printedAny && len(files) > 1 {
+			fmt.Println()
 		}
 
-		fmt.Print(string(data[start:]))
+		if len(files) > 1 {
+			fmt.Printf("==> %s <==\n", fn)
+		}
+
+		size := info.Size()
+		start := int64(0)
+
+		if int64(n) < size {
+			start = size - int64(n)
+		}
+
+		f.Seek(start, 0)
+		buf := make([]byte, int(size-start))
+		_, err = f.Read(buf)
+		f.Close()
+
+		if err != nil {
+			fmt.Println(err)
+			status = 1
+			printedAny = true
+			continue
+		}
+
+		fmt.Print(string(buf))
+		printedAny = true
 	}
 
-	if exitCode != 0 {
+	if status != 0 {
 		os.Exit(1)
 	}
 }
