@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "github.com/01-edu/z01"
 
 type point struct {
 	x int
@@ -14,9 +12,36 @@ func setPoint(ptr *point) {
 	ptr.y = 21
 }
 
+func printStr(s string) {
+	for _, r := range s {
+		z01.PrintRune(r)
+	}
+}
+
+func printInt(n int) {
+	if n == 0 {
+		z01.PrintRune('-')
+		n = -n
+	}
+
+	digits := []rune{}
+	for n > 0 {
+		digits = append([]rune{rune(n%10 + '0')}, digits...)
+		n /= 10
+	}
+
+	for _, d := range digits {
+		z01.PrintRune(d)
+	}
+}
+
 func main() {
-	points := &point{} // CReate a ponter to a new 'point' struct
+	points := &point{}
 	setPoint(points)
 
-	fmt.Printf("x = %d, y = %d\n", points.x, points.y)
+	printStr("x =")
+	printInt(points.x)
+	printStr(", y =")
+	printInt(points.y)
+	z01.PrintRune('\n')
 }
