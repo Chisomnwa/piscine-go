@@ -26,7 +26,7 @@ func main() {
 		if err != nil {
 			printstrs("ERROR: open ")
 			printstrs(args[i])
-			printstrs(": No such file or directory\nexit status 1\n")
+			printstrs(": no such file or directory\nexit status 1\n")
 		} else {
 			printstrs(string(filecontent))
 		}
