@@ -36,7 +36,7 @@ func main() {
 			printedAny = true
 			continue
 		}
-		
+
 		info, err := f.Stat()
 		if err != nil {
 			fmt.Println(err)
