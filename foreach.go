@@ -5,5 +5,3 @@ func ForEach(f func(int), a []int) {
 		f(n)
 	}
 }
-
-
