@@ -2,9 +2,7 @@ package main
 
 import (
 	"io"
-	"io/ioutil"
 	"os"
-
 	"github.com/01-edu/z01"
 )
 
@@ -16,18 +14,20 @@ func printstrs(s string) {
 
 func main() {
 	args := os.Args[1:]
+
 	if len(args) == 0 {
 		io.Copy(os.Stdout, os.Stdin)
+		return
 	}
 
 	for i := 0; i < len(args); i++ {
-		filecontent, err := ioutil.ReadFile(args[i])
+		filecontent, err := os.ReadFile(args[i])
 		if err != nil {
-			printstrs("ERROR: Open ")
+			printstrs("ERROR: open ")
 			printstrs(args[i])
 			printstrs(": No such file or directory\nexit status 1\n")
 		} else {
-			printstrs(string(filecontent)) // filecontent is a slice of byte so we transfrom it to string
+			printstrs(string(filecontent))
 		}
 	}
 }
