@@ -28,7 +28,7 @@ func main() {
 
 	content, err := io.ReadAll(file)
 	if err != nil {
-		fmt.Println("Cannot reda file")
+		fmt.Println("Cannot read file")
 		return
 	}
 
