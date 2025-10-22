@@ -20,6 +20,7 @@ func main() {
 	if len(os.Args) < 4 || os.Args[1] != "-c" {
 		os.Exit(1)
 	}
+	
 	n, ok := strToInt(os.Args[2])
 	if !ok || n <= 0 {
 		os.Exit(1)
