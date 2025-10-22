@@ -7,7 +7,7 @@ import (
 	"github.com/01-edu/z01"
 )
 
-func printstrs(s string) {
+func printstr(s string) {
 	for _, char := range s {
 		z01.PrintRune(char)
 	}
@@ -24,12 +24,12 @@ func main() {
 	for i := 0; i < len(args); i++ {
 		filecontent, err := os.ReadFile(args[i])
 		if err != nil {
-			printstrs("ERROR: open ")
-			printstrs(args[i])
-			printstrs(": no such file or directory\n")
-			os.Exit(1) // ✅ exit with real non-zero status
+			printstr("ERROR: Open ")
+			printstr(args[i])
+			printstr(": no such file or directory\n")
+			os.Exit(1)
 		} else {
-			printstrs(string(filecontent))
+			printstr(string(filecontent))
 		}
 	}
 }
