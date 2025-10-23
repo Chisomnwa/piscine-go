@@ -5,80 +5,45 @@ import (
 	"os"
 )
 
-func strToInt(s string) (int, bool) {
-	n := 0
-	for _, r := range s {
-		if r < '0' || r > '9' {
-			return 0, false
-		}
-		n = n*10 + int(r-'0')
-	}
-	return n, true
-}
-
 func main() {
-	if len(os.Args) < 4 || os.Args[1] != "-c" {
+	a := os.Args
+	if len(a) < 4 || a[1] != "-c" {
 		os.Exit(1)
 	}
-	
-	n, ok := strToInt(os.Args[2])
-	if !ok || n <= 0 {
-		os.Exit(1)
+	n := 0
+	for _, ch := range a[2] {
+		if ch < '0' || ch > '9' {
+			os.Exit(1)
+		}
+		n = n*10 + int(ch-'0')
 	}
-
-	files := os.Args[3:]
-	status := 0
-	printedAny := false
-	for _, fn := range files {
-		f, err := os.Open(fn)
+	hasError := false
+	for i, f := range a[3:] {
+		file, err := os.Open(f)
 		if err != nil {
-			fmt.Println(err)
-			status = 1
-			printedAny = true
+			fmt.Fprintf(os.Stderr, "open %s: no such file or directory\n", f)
+			hasError = true
 			continue
 		}
-
-		info, err := f.Stat()
-		if err != nil {
-			fmt.Println(err)
-			status = 1
-			f.Close()
-			printedAny = true
-			continue
-		}
-
-		if printedAny && len(files) > 1 {
-			fmt.Println()
-		}
-
-		if len(files) > 1 {
-			fmt.Printf("==> %s <==\n", fn)
-		}
-
+		info, _ := file.Stat()
 		size := info.Size()
-		start := int64(0)
-
-		if int64(n) < size {
-			start = size - int64(n)
+		bytesToRead := n
+		if size < int64(n) {
+			bytesToRead = int(size)
 		}
-
-		f.Seek(start, 0)
-		buf := make([]byte, int(size-start))
-		_, err = f.Read(buf)
-		f.Close()
-
-		if err != nil {
-			fmt.Println(err)
-			status = 1
-			printedAny = true
-			continue
+		file.Seek(-int64(bytesToRead), 2)
+		if len(a[3:]) > 1 {
+			if i > 0 {
+				fmt.Printf("\n")
+			}
+			fmt.Printf("==> %s <==\n", f)
 		}
-
-		fmt.Print(string(buf))
-		printedAny = true
+		buf := make([]byte, bytesToRead)
+		file.Read(buf)
+		fmt.Printf("%s", buf)
+		file.Close()
 	}
-
-	if status != 0 {
+	if hasError {
 		os.Exit(1)
 	}
 }
