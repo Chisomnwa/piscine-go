@@ -20,20 +20,20 @@ func main() {
 	// Define slice as rune instead of []int (so no conversion needed)
 	output := []rune{
 		120, // x
-		32, // space
-		61, // =
-		32, // space
-		52, // '4'
-		50, // '2'
-		44, // ','
-		32, // space
+		32,  // space
+		61,  // =
+		32,  // space
+		52,  // '4'
+		50,  // '2'
+		44,  // ','
+		32,  // space
 		121, // y
-		32, // space
-		61, // =
-		32, // space
-		50, // '2'
-		49, // '1'
-		10, // newline
+		32,  // space
+		61,  // =
+		32,  // space
+		50,  // '2'
+		49,  // '1'
+		10,  // newline
 	}
 
 	for _, v := range output {
