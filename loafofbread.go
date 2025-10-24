@@ -1,7 +1,7 @@
 package piscine
 
 func LoafOfBread(str string) string {
-	// Step 1: Remove spaces from input
+	// Step 1: remove spaces
 	runes := []rune{}
 	for _, r := range str {
 		if r != ' ' {
@@ -9,26 +9,33 @@ func LoafOfBread(str string) string {
 		}
 	}
 
-	// Step 2: Check minimum length
+	// Step 2: check if less than 5 chars
 	if len(runes) < 5 {
 		return "Invalid Output\n"
 	}
 
-	// Step 3: Build result
+	// Step 3: build result
 	result := ""
 	i := 0
-	for i+5 <= len(runes) {
-		// Take 5 characters
-		result += string(runes[i : i+5])
-
-		i += 5 // move past 5 characters
-
-		// Add a space if there are more characters after skipping
-		if i < len(runes) {
-			result += " "
+	for {
+		// Stop if less than 5 remain
+		if i+5 > len(runes) {
+			break
 		}
 
-		i++ // skip 1 character
+		// Take 5 characters
+		result += string(runes[i : i+5])
+		i += 5
+
+		// Skip one character *if there’s one to skip*
+		if i < len(runes) {
+			i++
+		}
+
+		// Add space if there are still enough letters left for another group
+		if i+5 <= len(runes) {
+			result += " "
+		}
 	}
 
 	return result + "\n"
