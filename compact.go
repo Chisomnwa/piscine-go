@@ -6,7 +6,7 @@ func Compact(ptr *[]string) int {
 
 	// First, move all non-empty strings to the front manually
 	for i := range s {
-		if s[i] != " " {
+		if s[i] != "" {
 			s[count] = s[i]
 			count++
 		}
