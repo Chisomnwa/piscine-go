@@ -10,18 +10,14 @@ func ShoppingSummaryCounter(str string) map[string]int {
 		if char != ' ' {
 			word += string(char)
 		} else {
-			// Only count the word if it's not empty
-			if word != "" {
-				result[word]++
-				word = ""
-			}
+			// even if word is empty, count it
+			result[word]++
+			word = ""
 		}
 	}
 
-	// Handle the last word (if there’s no trailing space)
-	if word != "" {
-		result[word]++
-	}
+	// count the last word (even if it's empty)
+	result[word]++
 
 	return result
 }
