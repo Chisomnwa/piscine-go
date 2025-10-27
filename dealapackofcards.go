@@ -20,5 +20,4 @@ func DealAPackofCards(deck []int) {
 		}
 		fmt.Printf("/n")
 	}
-
 }
