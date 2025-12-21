@@ -1,3 +1,3 @@
 # piscine-go
 
-Just for a revision. ❤️
+Just for a revision. 😉
