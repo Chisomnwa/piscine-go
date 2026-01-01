@@ -1,0 +1,1 @@
+ls -1uFA | sort -r | paste -sd, -
