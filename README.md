@@ -1,3 +1,3 @@
-# piscine-go
+# go-recap
 
 Just for a revision. 😉
